@@ -1,6 +1,6 @@
 fastapi
 uvicorn
 sqlalchemy
-pydantic
+pydantic<2.0.0
 fastapi-jwt-auth
 passlib[bcrypt]
