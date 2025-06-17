@@ -2,7 +2,13 @@ from fastapi import FastAPI
 from auth import router as auth_router
 from crud import router as product_router
 import uvicorn
+from .database import engine
+from . import models
 
+# Create all database tables
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
 app = FastAPI(title="Inventory Management System")
 
 app.include_router(auth_router)
