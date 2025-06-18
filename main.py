@@ -11,6 +11,9 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 app = FastAPI(title="Inventory Management System")
 
+@app.get("/")
+def read_root():
+    return {"message": "Inventory Management System API is live 🚀"}
 app.include_router(auth_router)
 app.include_router(product_router)
 
