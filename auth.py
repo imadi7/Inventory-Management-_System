@@ -11,9 +11,9 @@ router = APIRouter()
 @router.post("/login", response_model=TokenResponse)
 def login(user: UserLogin, Authorize: AuthJWT = Depends()):
     db = SessionLocal()
-    db_user = db.query(User).filter(User.username == "testuser").first()
+    db_user = db.query(User).filter(User.username == "user.username").first()
 
-    if not db_user or not bcrypt.verify(user.password, "testpass"):
+    if not db_user or not bcrypt.verify(user.password, "db_user.password"):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password"
