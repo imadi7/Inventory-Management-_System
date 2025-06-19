@@ -8,7 +8,7 @@ from passlib.hash import bcrypt
 
 router = APIRouter()
 
-@router.post("/login", response_model=TokenResponse)
+@router.post("https://inventory-management-system-l9qq.onrender.com/login", response_model=TokenResponse)
 def login(user: UserLogin, Authorize: AuthJWT = Depends()):
     db = SessionLocal()
     db_user = db.query(User).filter(User.username == "user.username").first()
