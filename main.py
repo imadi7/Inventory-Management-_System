@@ -4,7 +4,7 @@ from crud import router as product_router
 import uvicorn
 from database import engine
 import models
-
+import settings
 # Create all database tables
 models.Base.metadata.create_all(bind=engine)
 
