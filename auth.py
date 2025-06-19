@@ -1,3 +1,13 @@
+from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi_jwt_auth import AuthJWT
+from fastapi_jwt_auth.exceptions import AuthJWTException
+from schemas import UserLogin, TokenResponse
+from database import SessionLocal
+from models import User
+from passlib.hash import bcrypt
+
+router = APIRouter()  # ✅ Define first
+
 @router.post("/login", response_model=TokenResponse)
 def login(user: UserLogin, Authorize: AuthJWT = Depends()):
     db = SessionLocal()
