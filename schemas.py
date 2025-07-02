@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, constr, PositiveInt, PositiveFloat
 
 class UserRegister(BaseModel):
     username: str
@@ -13,9 +13,9 @@ class TokenResponse(BaseModel):
     token_type: str = "bearer"
 
 class ProductCreate(BaseModel):
-    name: str
-    type: str
-    sku: str
+    name: constr(max_length=100)
+    type: constr(max_length=50)
+    sku: constr(max_length=20, regex=r'^[A-Z0-9-]+$')
     image_url: str
     description: str
     quantity: int
