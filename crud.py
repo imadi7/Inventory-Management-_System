@@ -34,6 +34,10 @@ def update_quantity(product_id: int, qty: ProductUpdateQty, Authorize: AuthJWT =
     return {"quantity": product.quantity}
 
 @router.get("/")
-def get_products(Authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
-    Authorize.jwt_required()
-    return db.query(Product).all()
+def get_products(
+    skip: int = 0, 
+    limit: int = 100,
+    Authorize: AuthJWT = Depends(),
+    db: Session = Depends(get_db)
+):
+    return db.query(Product).offset(skip).limit(limit).all()
