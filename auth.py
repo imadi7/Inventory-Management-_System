@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi_jwt_auth import AuthJWT
 from schemas import UserLogin, UserRegister, TokenResponse
-from database import SessionLocal, get_db
+from database import get_db  # Changed from SessionLocal
 from models import User
 from passlib.hash import bcrypt
 from pydantic import constr
