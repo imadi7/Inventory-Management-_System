@@ -44,6 +44,7 @@ def register(
         "user_id": new_user.id
     }
 
+
 @router.post("/login", response_model=TokenResponse)
 def login(
     user: UserLogin, 
