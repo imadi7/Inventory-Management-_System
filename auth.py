@@ -67,10 +67,5 @@ def login(
         "access_token": access_token,
         "token_type": "bearer"
     }
-     def get_db():
-     db = SessionLocal()
-     try:
-        yield db
-     finally:
-        db.close()
+     
 
